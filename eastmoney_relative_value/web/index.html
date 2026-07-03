@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1014">
+  <title>市场脉搏｜四股相对价值</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <main class="shell" aria-live="polite">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">MARKET PULSE · RELATIVE VALUE</p>
+        <h1>市场脉搏</h1>
+        <p class="subtitle">四只资本市场活跃度敏感股票的动态偏离</p>
+      </div>
+      <button id="refreshButton" class="refresh" type="button">
+        <span aria-hidden="true">↻</span> 刷新数据
+      </button>
+    </header>
+
+    <section class="statusbar">
+      <div><span class="status-dot"></span><span id="statusText">等待数据</span></div>
+      <div id="updateTime">—</div>
+    </section>
+
+    <section id="stockGrid" class="stock-grid" aria-label="股票偏离结果"></section>
+
+    <footer>
+      <p id="modelInfo">模型信息载入中</p>
+      <p>本模型仅基于历史数据和统计关系，用于辅助分析，不构成投资建议。任何操作均需人工确认。</p>
+    </footer>
+  </main>
+
+  <div id="loginGate" class="login-gate">
+    <form id="loginForm" class="login-panel">
+      <p class="eyebrow">PRIVATE VIEW</p>
+      <h2>进入市场脉搏</h2>
+      <p>输入访问PIN以查看四股动态结果</p>
+      <label for="pinInput">4位或6位数字PIN</label>
+      <input id="pinInput" type="password" inputmode="numeric" pattern="[0-9]*"
+             maxlength="6" autocomplete="current-password" autofocus>
+      <button type="submit">进入看板</button>
+      <p id="loginError" class="login-error" role="alert"></p>
+    </form>
+  </div>
+
+  <template id="stockCardTemplate">
+    <article class="stock-card">
+      <div class="card-top">
+        <div><p class="stock-code"></p><h2 class="stock-name"></h2></div>
+        <span class="mode-badge"></span>
+      </div>
+      <div class="price-row">
+        <div><span>当前价格</span><strong class="actual-price"></strong></div>
+        <div><span>理论中枢</span><strong class="theory-price"></strong></div>
+      </div>
+      <div class="deviation-block">
+        <strong class="deviation"></strong>
+        <span class="deviation-level"></span>
+      </div>
+      <div class="zone-grid">
+        <div><span>买入观察</span><b class="buy-zone"></b></div>
+        <div><span>卖出观察</span><b class="sell-zone"></b></div>
+        <div><span>止损参考</span><b class="stop-price"></b></div>
+        <div><span>风险 / 置信</span><b class="risk-confidence"></b></div>
+      </div>
+      <p class="card-note"></p>
+      <p class="data-time"></p>
+    </article>
+  </template>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

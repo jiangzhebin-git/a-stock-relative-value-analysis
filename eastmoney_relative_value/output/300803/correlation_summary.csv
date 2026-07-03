@@ -1,9 +1,9 @@
 ﻿variable,same_day_correlation
-broker_return,0.6957869427383976
+broker_return,0.6957869427383974
 sz_return,0.5527133197204193
-sh_return,0.5380991512511506
+sh_return,0.5380991512511505
 hs300_return,0.5273741233101347
 cyb_return,0.5140470160602282
-stock_turnover_change,0.40343954034309276
-stock_volume_change,0.38576035600085934
-market_amount_change,0.24821374007198993
+stock_turnover_change,0.4034395403430929
+stock_volume_change,0.3857603560008593
+market_amount_change,0.24821374007198976

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-03T20:13:36.411367+08:00",
+  "data_date": "2026-07-02 00:00:00",
+  "stocks": {
+    "300059": {
+      "symbol": "300059",
+      "name": "东方财富",
+      "model": "B",
+      "features": [
+        "sh_return",
+        "sz_return",
+        "cyb_return",
+        "hs300_return",
+        "broker_return"
+      ],
+      "intercept": 0.0006020504704919958,
+      "coefficients": {
+        "sh_return": -0.40691693732155215,
+        "sz_return": -0.45734779768067385,
+        "cyb_return": 0.823147002526567,
+        "hs300_return": 0.20849459523908273,
+        "broker_return": 1.203120467300855
+      },
+      "base_close": 20.73,
+      "previous_volume": 575507544.0,
+      "previous_turnover": 4.309853939087944,
+      "previous_market_amount": 1592059268893249.8,
+      "band_pct": 0.0518895403043737,
+      "risk_level": "中",
+      "daily_fallback": {
+        "actual_price": 20.73,
+        "theoretical_price": 20.26706911000243,
+        "deviation_pct": 0.02284153113037446,
+        "deviation_level": "偏贵",
+        "buy_zones": [
+          19.478332435426182,
+          18.952507985708685,
+          18.426683535991184
+        ],
+        "sell_zones": [
+          21.05580578457868,
+          21.58163023429618,
+          22.107454684013675
+        ],
+        "stop_loss_price": 18.804000000000002
+      },
+      "metrics": {
+        "r2": 0.7610968401874545,
+        "mae": 0.009669197681116532,
+        "rmse": 0.01406048376724803,
+        "direction_accuracy": 0.8439944776806259
+      },
+      "data_date": "2026-07-02T00:00:00"
+    },
+    "300033": {
+      "symbol": "300033",
+      "name": "同花顺",
+      "model": "D",
+      "features": [
+        "sh_return",
+        "sz_return",
+        "cyb_return",
+        "hs300_return",
+        "broker_return",
+        "market_amount_change",
+        "stock_volume_change",
+        "stock_turnover_change"
+      ],
+      "intercept": 0.00012166865524850206,
+      "coefficients": {
+        "sh_return": -0.06571829684405658,
+        "sz_return": 0.41268525098558895,
+        "cyb_return": 0.4484017646352013,
+        "hs300_return": -0.754733051077356,
+        "broker_return": 1.2699745206162,
+        "market_amount_change": 0.0035994543781289337,
+        "stock_volume_change": -0.0030000960279310744,
+        "stock_turnover_change": 0.011044178735454933
+      },
+      "base_close": 247.65,
+      "previous_volume": 26132196.0,
+      "previous_turnover": 5.960662740252857,
+      "previous_market_amount": 1592059268893249.8,
+      "band_pct": 0.06646389498749461,
+      "risk_level": "中",
+      "daily_fallback": {
+        "actual_price": 247.65,
+        "theoretical_price": 244.76175644360154,
+        "deviation_pct": 0.0118002240152415,
+        "deviation_level": "合理",
+        "buy_zones": [
+          232.56089168568482,
+          224.4269818470737,
+          216.29307200846256
+        ],
+        "sell_zones": [
+          256.96262120151823,
+          265.0965310401294,
+          273.2304408787405
+        ],
+        "stop_loss_price": 222.88500000000002
+      },
+      "metrics": {
+        "r2": 0.5962493003269109,
+        "mae": 0.01415713019897588,
+        "rmse": 0.022017304147829004,
+        "direction_accuracy": 0.8084714548802947
+      },
+      "data_date": "2026-07-02T00:00:00"
+    },
+    "300803": {
+      "symbol": "300803",
+      "name": "指南针",
+      "model": "C",
+      "features": [
+        "sh_return",
+        "sz_return",
+        "cyb_return",
+        "hs300_return",
+        "broker_return",
+        "market_amount_change"
+      ],
+      "intercept": 0.0017076908490438864,
+      "coefficients": {
+        "sh_return": -0.2583910065374975,
+        "sz_return": 1.4028176087604292,
+        "cyb_return": 0.051292549390033484,
+        "hs300_return": -1.6433891946563044,
+        "broker_return": 1.687309222203229,
+        "market_amount_change": 0.017606915727716017
+      },
+      "base_close": 88.99,
+      "previous_volume": 31558359.0,
+      "previous_turnover": 5.213334926665956,
+      "previous_market_amount": 1592059268893249.8,
+      "band_pct": 0.06742653071185473,
+      "risk_level": "中",
+      "daily_fallback": {
+        "actual_price": 88.99,
+        "theoretical_price": 92.24199357228562,
+        "deviation_pct": -0.035255022645810374,
+        "deviation_level": "偏便宜",
+        "buy_zones": [
+          87.57732536289231,
+          84.4675465566301,
+          81.35776775036788
+        ],
+        "sell_zones": [
+          96.90666178167895,
+          100.01644058794115,
+          103.12621939420336
+        ],
+        "stop_loss_price": 80.091
+      },
+      "metrics": {
+        "r2": 0.5540342523698814,
+        "mae": 0.017142917227983948,
+        "rmse": 0.025434958504768793,
+        "direction_accuracy": 0.7640532544378699
+      },
+      "data_date": "2026-07-02T00:00:00"
+    },
+    "688318": {
+      "symbol": "688318",
+      "name": "财富趋势",
+      "model": "C",
+      "features": [
+        "sh_return",
+        "sz_return",
+        "cyb_return",
+        "hs300_return",
+        "broker_return",
+        "market_amount_change"
+      ],
+      "intercept": 0.0004545476436370278,
+      "coefficients": {
+        "sh_return": -0.01959553528012913,
+        "sz_return": 1.2136532680248162,
+        "cyb_return": 0.19402138563644908,
+        "hs300_return": -1.8422323284520268,
+        "broker_return": 1.8324245765008789,
+        "market_amount_change": 0.035422219643135286
+      },
+      "base_close": 80.09,
+      "previous_volume": 13993983.0,
+      "previous_turnover": 3.9027497937207096,
+      "previous_market_amount": 1592059268893249.8,
+      "band_pct": 0.08,
+      "risk_level": "中",
+      "daily_fallback": {
+        "actual_price": 80.09,
+        "theoretical_price": 77.54988153128541,
+        "deviation_pct": 0.03275464022069263,
+        "deviation_level": "偏贵",
+        "buy_zones": [
+          72.89688863940827,
+          69.79489337815687,
+          66.69289811690545
+        ],
+        "sell_zones": [
+          82.20287442316254,
+          85.30486968441396,
+          88.40686494566538
+        ],
+        "stop_loss_price": 72.081
+      },
+      "metrics": {
+        "r2": 0.6215797945836821,
+        "mae": 0.015858613257042745,
+        "rmse": 0.02405384065483517,
+        "direction_accuracy": 0.7983935742971887
+      },
+      "data_date": "2026-07-02T00:00:00"
+    }
+  }
+}

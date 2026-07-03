@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 from datetime import date, timedelta
 from pathlib import Path
@@ -9,7 +10,7 @@ import pandas as pd
 
 from src.alerts import build_alerts, save_new_alerts
 from src.backtest import benchmark_metrics, run_backtest
-from src.config import RISK_WARNING, STOCKS, ensure_dirs
+from src.config import MODEL_FEATURES, RISK_WARNING, STOCKS, ensure_dirs
 from src.correlation_analysis import correlation_summary, correlation_table
 from src.deviation_signal import add_deviation_signals, operation_advice
 from src.feature_engineering import build_features
@@ -88,6 +89,39 @@ def run_single_stock(
         signals, corr_sum, lag, model_metrics, bt_metrics, coefficients, best,
         stock_output_dir, name, symbol,
     )
+    selected_coefficients = coefficients[coefficients["model"] == best]
+    coefficient_map = dict(
+        zip(selected_coefficients["variable"], selected_coefficients["coefficient"])
+    )
+    best_metrics = model_metrics.loc[model_metrics["model"] == best].iloc[0]
+    registry = {
+        "symbol": symbol, "name": name, "model": best,
+        "features": MODEL_FEATURES[best],
+        "intercept": float(coefficient_map.pop("intercept")),
+        "coefficients": {k: float(v) for k, v in coefficient_map.items()},
+        "base_close": float(merged.iloc[-1]["close"]),
+        "previous_volume": float(merged.iloc[-1]["volume"]),
+        "previous_turnover": float(merged.iloc[-1]["turnover"]),
+        "previous_market_amount": float(merged.iloc[-1]["market_amount"]),
+        "band_pct": float(latest["band_pct"]),
+        "risk_level": str(latest["risk_level"]),
+        "daily_fallback": {
+            "actual_price": float(latest["close"]),
+            "theoretical_price": float(latest["theoretical_price"]),
+            "deviation_pct": float(latest["deviation_pct"]),
+            "deviation_level": str(latest["deviation_level"]),
+            "buy_zones": [float(latest[f"buy_zone_{i}"]) for i in range(1, 4)],
+            "sell_zones": [float(latest[f"sell_zone_{i}"]) for i in range(1, 4)],
+            "stop_loss_price": float(latest["stop_loss_price"]),
+        },
+        "metrics": {
+            "r2": float(best_metrics["r2"]),
+            "mae": float(best_metrics["mae"]),
+            "rmse": float(best_metrics["rmse"]),
+            "direction_accuracy": float(best_metrics["direction_accuracy"]),
+        },
+        "data_date": pd.Timestamp(merged.iloc[-1]["date"]).isoformat(),
+    }
     summary = {
         "date": latest["date"], "symbol": symbol, "name": name,
         "daily_start": merged["date"].min(), "daily_end": merged["date"].max(),
@@ -101,7 +135,7 @@ def run_single_stock(
         "sell_zone_2": latest["sell_zone_2"], "sell_zone_3": latest["sell_zone_3"],
         "stop_loss_price": latest["stop_loss_price"], "risk_level": latest["risk_level"],
         "advice": operation_advice(latest), "report": str(report),
-        **intraday_summary(intraday_result),
+        **intraday_summary(intraday_result), "_registry": registry,
     }
     LOGGER.info("%s(%s) 完成：模型 %s，偏离 %.2f%%", name, symbol, best, latest["deviation_pct"] * 100)
     return summary
@@ -148,14 +182,14 @@ def run_pipeline(
     market = fetch_market_data(
         market_dir, start.replace("-", ""), end.replace("-", ""), force
     )
-    summaries, failures = [], []
+    summaries, registries, failures = [], {}, []
     for symbol in selected:
         try:
-            summaries.append(
-                run_single_stock(
+            result = run_single_stock(
                     root, symbol, STOCKS[symbol], market, start, end, force, fetch_minutes
                 )
-            )
+            registries[symbol] = result.pop("_registry")
+            summaries.append(result)
         except Exception as exc:
             LOGGER.exception("%s(%s) 分析失败，其余股票继续", STOCKS[symbol]["name"], symbol)
             failures.append({"symbol": symbol, "error": str(exc)})
@@ -163,6 +197,15 @@ def run_pipeline(
         raise RuntimeError(f"所有股票均分析失败: {failures}")
     summary = pd.DataFrame(summaries)
     save_csv(summary, output_dir / "multi_stock_summary.csv")
+    registry_payload = {
+        "schema_version": 1,
+        "generated_at": pd.Timestamp.now(tz="Asia/Shanghai").isoformat(),
+        "data_date": str(summary["daily_end"].max()),
+        "stocks": registries,
+    }
+    (output_dir / "model_registry.json").write_text(
+        json.dumps(registry_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     alerts = build_alerts(summary)
     new_alerts = save_new_alerts(alerts, output_dir)
     report = _write_consolidated_report(summary, output_dir)

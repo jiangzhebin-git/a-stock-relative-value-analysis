@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-03T20:15:27.855804+08:00",
+  "model_generated_at": "2026-07-03T20:13:36.411367+08:00",
+  "model_data_date": "2026-07-02 00:00:00",
+  "stocks": [
+    {
+      "symbol": "300059",
+      "name": "东方财富",
+      "model": "B",
+      "actual_price": 21.06,
+      "theoretical_price": 20.84396624691158,
+      "deviation_pct": 0.01036433040282958,
+      "deviation_level": "合理",
+      "buy_zones": [
+        20.032778376907487,
+        19.49198646357143,
+        18.951194550235364
+      ],
+      "sell_zones": [
+        21.655154116915675,
+        22.195946030251736,
+        22.736737943587794
+      ],
+      "stop_loss_price": 18.804000000000002,
+      "risk_level": "中",
+      "mode": "dynamic_intraday",
+      "confidence": "高",
+      "data_time": "2026-07-03T16:14:24",
+      "market_progress": 1.0,
+      "missing_features": [],
+      "message": "累计量能已按当前交易时间折算为预计全天值"
+    },
+    {
+      "symbol": "300033",
+      "name": "同花顺",
+      "model": "D",
+      "actual_price": 246.18,
+      "theoretical_price": 247.94944662999944,
+      "deviation_pct": -0.007136320141257979,
+      "deviation_level": "合理",
+      "buy_zones": [
+        235.58968214273168,
+        227.34983915121984,
+        219.109996159708
+      ],
+      "sell_zones": [
+        260.3092111172672,
+        268.54905410877905,
+        276.7888971002909
+      ],
+      "stop_loss_price": 222.88500000000002,
+      "risk_level": "中",
+      "mode": "dynamic_intraday",
+      "confidence": "高",
+      "data_time": "2026-07-03T16:14:36",
+      "market_progress": 1.0,
+      "missing_features": [],
+      "message": "累计量能已按当前交易时间折算为预计全天值"
+    },
+    {
+      "symbol": "300803",
+      "name": "指南针",
+      "model": "C",
+      "actual_price": 87.54,
+      "theoretical_price": 88.31956406484224,
+      "deviation_pct": -0.008826629446108902,
+      "deviation_level": "合理",
+      "buy_zones": [
+        83.85325271568546,
+        80.8757118162476,
+        77.89817091680975
+      ],
+      "sell_zones": [
+        92.78587541399902,
+        95.76341631343688,
+        98.74095721287473
+      ],
+      "stop_loss_price": 80.091,
+      "risk_level": "中",
+      "mode": "dynamic_intraday",
+      "confidence": "高",
+      "data_time": "2026-07-03T16:14:15",
+      "market_progress": 1.0,
+      "missing_features": [],
+      "message": "累计量能已按当前交易时间折算为预计全天值"
+    },
+    {
+      "symbol": "688318",
+      "name": "财富趋势",
+      "model": "C",
+      "actual_price": 78.12,
+      "theoretical_price": 77.91740015073515,
+      "deviation_pct": 0.0026001874917915835,
+      "deviation_level": "合理",
+      "buy_zones": [
+        73.24235614169103,
+        70.12566013566163,
+        67.00896412963223
+      ],
+      "sell_zones": [
+        82.59244415977926,
+        85.70914016580866,
+        88.82583617183808
+      ],
+      "stop_loss_price": 72.081,
+      "risk_level": "中",
+      "mode": "dynamic_intraday",
+      "confidence": "高",
+      "data_time": "2026-07-03T16:14:33",
+      "market_progress": 1.0,
+      "missing_features": [],
+      "message": "累计量能已按当前交易时间折算为预计全天值"
+    }
+  ]
+}
