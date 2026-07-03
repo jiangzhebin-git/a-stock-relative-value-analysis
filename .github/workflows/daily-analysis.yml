@@ -27,10 +27,10 @@ jobs:
 
     steps:
       - name: Checkout private repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -62,7 +62,7 @@ jobs:
           fi
 
       - name: Upload reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: stock-analysis-${{ github.run_number }}
           path: |
@@ -75,4 +75,3 @@ jobs:
       - name: Send failure alert to Feishu
         if: failure() && env.FEISHU_WEBHOOK_URL != ''
         run: python notify_feishu.py --failure "GitHub Actions任务失败，运行编号：${{ github.run_number }}"
-
