@@ -1,0 +1,28 @@
+[
+  {
+    "event_id":"300803-20260702-buy_watch",
+    "date":"2026-07-02T00:00:00.000",
+    "symbol":"300803",
+    "name":"指南针",
+    "event_type":"buy_watch",
+    "title":"买入观察",
+    "actual_price":88.99,
+    "theoretical_price":92.0038342102,
+    "deviation_pct":-0.0327577023,
+    "risk_level":"中",
+    "advice":"偏便宜，可进入分批买入观察区"
+  },
+  {
+    "event_id":"688318-20260702-sell_watch",
+    "date":"2026-07-02T00:00:00.000",
+    "symbol":"688318",
+    "name":"财富趋势",
+    "event_type":"sell_watch",
+    "title":"卖出观察",
+    "actual_price":80.09,
+    "theoretical_price":77.4582109697,
+    "deviation_pct":0.0339768889,
+    "risk_level":"中",
+    "advice":"偏贵，避免追涨，可考虑分批止盈"
+  }
+]
